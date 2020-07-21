@@ -1,5 +1,8 @@
 ![Computer Logo](Additional/icon.png "Dell XPS 15")
+
 Before we start:
+This guide was forked from wmchris and was done in my laptop with clover 5118 and catalina 10.15.4. Just update drivers and kexts if it doesn't work with newer versions.
+Memory fixes used are different from the ones used by wmchris.
 This installation includes real time DSDT/SSDT patching from within clover. This is pretty easy to install, but it is NOT suited for people with no or only limited knowledge of Hackintosh Systems. If you only know how to copy/paste commands in your shell and you dont know what they're doing, then stop the tutorial and revert to Windows or buy a real Mac. Even if you get it running, this system is not failsafe and will likely be broken multiple times in its usage time, it is likely you will encounter problems in future which will need to be fixed without a step by step tutorial.
 English is not my mother-tongue and I'm writing this without proof reading, so please forgive my bad spelling.
 
@@ -168,7 +171,17 @@ As I said before, this is not a tutorial for absolute beginners, though it's muc
 
 ## Appendix 1: Accessories
 
-The official [Dell adaptor DA200](http://accessories.euro.dell.com/sna/productdetail.aspx?c=at&l=de&s=dhs&cs=atdhs1&sku=470-abry) seem to work. You can use the Network, USB, HDMI and VGA. 
+The official [Dell adaptor DA200](http://accessories.euro.dell.com/sna/productdetail.aspx?c=at&l=de&s=dhs&cs=atdhs1&sku=470-abry) seem to work. You can use the Network, USB, HDMI and VGA.
 A cheap 3rd party unbranded USB-C -> VGA adaptor won't work. You can charge the Dell with a generic USB-C Power Adaptor, but USB-C has a maximum power of only 100W, so it's either charging OR usage, not both. Dont forget you need a special USB-C cable (Power Delivery 3.0) for charging. Charging with the Apple USB-C Charger works, but will be limited to ~60W (and therefore throttle the whole system).
-  
+
 The WD15 Docking works as well, but cannot be hotplugged and may break the sleep of your device. Ethernet requires [the official realtek drivers](https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-usb-3-0-software) to work.
+
+## Dual/Triple boot
+
+Steps to create dual boot with ubuntu:
+
+- partition the disk from within Catalina
+- Install ubuntu, after this you won't be able to boot from clover
+- Go into the bios and from the boot menu add the entry for clover found in EFI/CLOVER/CLOVERX64.efi. If this doesn't work boot from the USB and copy the USB EFI with the new ubuntu folder/files.
+
+For a windows installation just do a normal procedure, at the end there will be a windows entry in clover. If using that entry brings you to the windows recovery screen ensure that csm is off ()
